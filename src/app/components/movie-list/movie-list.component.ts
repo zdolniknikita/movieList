@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { MovieServiceService } from '../../services/movie-service.service'
+import { Component, OnInit, Input } from '@angular/core';
  
 @Component({
   selector: 'movie-list',
@@ -8,10 +7,14 @@ import { MovieServiceService } from '../../services/movie-service.service'
 })
 export class MovieListComponent implements OnInit {
 
-  constructor(private MS: MovieServiceService) { }
+  @Input() movies: Array<any>
 
-  async ngOnInit() {
-    await this.MS.getMovies()
+  constructor() {
+    
+  }
+
+  ngOnInit() {
+
   } 
 
 }

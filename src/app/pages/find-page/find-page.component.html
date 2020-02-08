@@ -1,0 +1,6 @@
+<h3>{{ pageTitle }}</h3>
+<movie-list [movies]="movies" *ngIf="movies.length"></movie-list>
+
+<h5 *ngIf="!movies.length">
+    Ничего не найдено по запросу <b>{{ query }}</b>
+</h5>

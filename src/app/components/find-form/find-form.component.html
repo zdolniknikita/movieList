@@ -1,0 +1,11 @@
+<nav class="#e3f2fd blue lighten-5">
+  <div class="nav-wrapper container #3367a6 blue darken-3 hoverable">
+    <form (submit)="onSubmit()">
+      <div class="input-field">
+        <input id="search" type="search" required [value]="query" (input)="onChange($event)">
+        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+        <i class="material-icons " (click)="clearQuery()">close</i>
+      </div>
+    </form>
+  </div>
+</nav>

@@ -11,7 +11,7 @@ export class HeaderComponent implements OnInit {
   constructor(private MS: MovieServiceService) { }
 
   async ngOnInit() {
-    await this.MS.getMovies()
   }
+
 
 }

@@ -1,0 +1,12 @@
+<h3>{{ pageTitle }}</h3>
+<div class="row container">
+    <div class="col s2" *ngFor="let genre of genres">
+        <div class="chip">
+            <a routerLink = "/genre/{{genre.id}}" routerLinkActive="active-link" [fragment] = "genre.name">
+                    {{ genre.name }}
+            </a>
+
+        </div>
+    </div>
+
+</div>

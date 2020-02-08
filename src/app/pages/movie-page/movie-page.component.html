@@ -1,0 +1,41 @@
+
+<div class="container">
+    <div class="col s12 m2">
+
+        <div class="card horizontal">
+          <div class="card-image">
+
+            <img [src]="src">
+          </div>
+          <div class="card-stacked">
+            <div class="card-content left">
+                <h3 class="header"><b>{{ movie.title }}</b>({{ movie.release_date }})</h3>
+            
+              <h4><b>Описание</b></h4>
+              <p>{{ movie.overview }}</p>
+              <h6><b>Рейтинг:</b> {{ movie.vote_average }}</h6>
+              <h6><b>Бюджет:</b> {{ movie.budget }}$</h6>
+              <h6><b>Доход:</b> {{ movie.revenue }}$</h6>
+
+              <h6><b>Жанры:</b></h6>
+              <div class="row">
+                <div class="col s12" *ngFor="let genre of movie.genres">
+                    <div class="chip">
+                        <!-- <img src="images/yuna.jpg" alt="Contact Person"> -->
+                        <a routerLink = "/genre/{{genre.id}}" routerLinkActive="active-link" [fragment] = "genre.name">
+                          {{ genre.name }}
+                        </a>
+                      </div>
+                </div>
+
+              </div>
+
+            </div>
+            <div class="card-action">
+              <a href="{{movie.homepage}}">Сайт фильма</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+</div>

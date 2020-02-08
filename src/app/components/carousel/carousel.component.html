@@ -1,0 +1,11 @@
+<div>
+<div class="slider">
+    <ul class="slides">
+      <li *ngFor="let item of movies" class="#ffffff white">
+        <div class="container">
+          <img [src]="src+item.poster_path"> <!-- random image -->    
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
