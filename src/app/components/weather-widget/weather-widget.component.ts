@@ -9,7 +9,7 @@ import { ForecastServiceService } from '../../services/forecast-service.service'
 })
 export class WeatherWidgetComponent implements OnInit {
 
-  forecast: object
+  forecast: any
   loaded: boolean
   constructor(private FS: ForecastServiceService) {
     this.loaded = false
