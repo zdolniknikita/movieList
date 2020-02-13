@@ -2,6 +2,7 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth'
 import { Router } from '@angular/router'
 import { LoginServiceService } from '../../services/login-service.service'
+
  
 @Component({
   selector: 'app-login-page',
@@ -18,11 +19,7 @@ export class LoginPageComponent implements OnInit {
 
   constructor(private ls: LoginServiceService) {
 
-    this.ls.loginError.subscribe(error => {
-
-      console.log('subscribe error', error)
-      this.error = error
-    })
+    
   }
 
   ngOnInit() {
@@ -31,7 +28,7 @@ export class LoginPageComponent implements OnInit {
         this.user = user
       })
 
-
+      this.ls.loginError.subscribe(val => this.error = val)
   }
 
   loginGoogle = () => this.ls.loginGoogle()

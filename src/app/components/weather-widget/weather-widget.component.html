@@ -1,3 +1,14 @@
-<li class="blue-text text-darken-4">
-    weather widget
+<li class="blue-text text-darken-4" *ngIf="loaded">
+        <!-- <span>
+            <img src="http://openweathermap.org/img/wn/{{forecast.weather[0].icon}}@2x.png" alt="">
+        </span> -->
+        <span>
+            <b>T:</b> {{ forecast.main.temp}} °C,
+        </span>
+        <span>
+            <b>H:</b> {{ forecast.main.humidity}} %,
+        </span>
+        <span>
+            <b>P:</b> {{ forecast.main.pressure}} Pa
+        </span>
 </li>

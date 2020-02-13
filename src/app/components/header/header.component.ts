@@ -18,7 +18,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.afAuth.authState
       .subscribe( user => {
-        console.log( user )
         this.user = user
       })
   }

@@ -2,6 +2,9 @@
     <form class="col s12">
 
         <div class="row">
+          <p *ngIf="error">
+            {{ error }}
+          </p>
             <div class="input-field col s12">
                 <input [(ngModel)]="name" id="name" type="text" class="validate" [ngModelOptions]="{standalone: true}">
                 <label for="name">Имя</label>

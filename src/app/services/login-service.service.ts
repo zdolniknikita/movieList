@@ -3,7 +3,7 @@ import { Router } from '@angular/router'
 
 import { AngularFireAuth } from 'angularfire2/auth'
 import { auth } from 'firebase'
-import { Observable } from 'rxjs';
+import { Observable,BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,18 +12,18 @@ import { Observable } from 'rxjs';
 export class LoginServiceService {
 
   authState: any
-  loginError: Observable<string>
-  registerError: any
+  loginError: BehaviorSubject<string>
+  registerError: BehaviorSubject<string>
 
   constructor(private afAuth: AngularFireAuth,
               public router: Router) { 
 
+    this.loginError = new BehaviorSubject<string>('')
+    this.registerError = new BehaviorSubject<string>('')
+
     afAuth.authState.subscribe(auth => {
-        console.log("AUTH = ", auth)
         this.authState = auth
     })
-
-    this.loginError = new Observable(value => value.next('default error'))
   }
 
   loginGoogle = () => {
@@ -33,7 +33,7 @@ export class LoginServiceService {
         this.authState = res.user
         this.router.navigate(['main'])
       })
-      .catch(error => this.loginError = error.message)
+      .catch(error => this.loginError.next(error.message))
 
     // this.afAuth.auth
   }
@@ -45,7 +45,7 @@ export class LoginServiceService {
         this.authState = res.user
         this.router.navigate(['main'])
       })
-      .catch(error => this.loginError = error.message)
+      .catch(error => this.loginError.next(error.message))
   }
 
   getLoggedInUSer = () => {
@@ -54,8 +54,7 @@ export class LoginServiceService {
 
   // Returns true if user is logged in
 get authenticated(): boolean {
-  // console.log('authenticated', this.authState)
-  // if (this.authState) return true
+
   if (this.authState) return true
   return false
 }
@@ -76,11 +75,25 @@ get authenticated(): boolean {
       })
       .catch(error => {
         console.log('Something went wrong:', error.message)
-        this.registerError = error.message
+        this.registerError.next(error.message)
       })
   }
 
+  // login(email:string, password: string) {
+  //   this.afAuth.auth.signInWithEmailAndPassword(email, password)
+  //     .then(success => {
+  //       // console.log('login success', success)
+  //       this.authState = success
+  //       this.router.navigate(['main'])
+  //     })
+  //     .catch(error => {
+  //       console.log('Something went wrong:', error.message)
+  //     })
+  // }
+
+  
   login(email:string, password: string) {
+
     this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then(success => {
         // console.log('login success', success)
@@ -88,10 +101,8 @@ get authenticated(): boolean {
         this.router.navigate(['main'])
       })
       .catch(error => {
-        console.log('Something went wrong:', error.message)
+        console.log('Something went wrong in login:', error.message)
         this.loginError.next(error.message)
-        // this.loginError. (error.message)
-        // this.router.navigate(['signup'])
       })
   }
 

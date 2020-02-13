@@ -11,10 +11,12 @@ export class SignupPageComponent implements OnInit {
   name: string
   email: string
   password: string
+  error: string
 
   constructor(private ls: LoginServiceService) { }
 
   ngOnInit() {
+    this.ls.registerError.subscribe(val => this.error = val)
   }
 
   signup = () => {
