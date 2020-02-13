@@ -17,15 +17,19 @@ export class FindPageComponent implements OnInit {
     this.movies = []
     this.pageTitle = ''
     this.query = ''
+
+    this.router.queryParams.subscribe(async query => {
+      console.log('query', query)
+      this.query = this.router.queryParams['_value']['query']
+      this.movies = await this.MS.finMovie(this.query)
+    })
   }
 
   async ngOnInit() {
-
-    const { query } = this.router.queryParams['_value']
     
     this.pageTitle = this.router.data['_value']['title']
-    this.movies = await this.MS.finMovie(query)
-    this.query = query
+    this.query = this.router.queryParams['_value']['query']
+    this.movies = await this.MS.finMovie(this.query)
   }
 
 }

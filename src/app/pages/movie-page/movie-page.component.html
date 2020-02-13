@@ -14,8 +14,8 @@
               <h4><b>Описание</b></h4>
               <p>{{ movie.overview }}</p>
               <h6><b>Рейтинг:</b> {{ movie.vote_average }}</h6>
-              <h6><b>Бюджет:</b> {{ movie.budget }}$</h6>
-              <h6><b>Доход:</b> {{ movie.revenue }}$</h6>
+              <h6><b>Бюджет:</b> {{ movie.budget | currency }}</h6>
+              <h6><b>Доход:</b> {{ movie.revenue | currency }}</h6>
 
               <h6><b>Жанры:</b></h6>
               <div class="row">

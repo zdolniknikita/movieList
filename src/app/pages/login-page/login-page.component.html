@@ -1,1 +1,42 @@
-<p>login-page works!</p>
+<div class="row container">
+    <form class="col s12">
+      <p *ngIf="error">
+        {{ error }}
+      </p>
+      <div class="row">
+        <div class="input-field col s12">
+            <input [(ngModel)]="email" id="email" type="email" class="validate" [ngModelOptions]="{standalone: true}">
+            <label for="email">Email</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input [(ngModel)]="password" id="password" type="password" class="validate" [ngModelOptions]="{standalone: true}">
+          <label for="password">Password</label>
+        </div>
+      </div>
+      <div class="row">
+        <button class="btn waves-effect waves-light" type="submit" name="action" (click)="login()">Логин
+            <i class="material-icons right">send</i>
+          </button>
+      </div>
+
+      <div class="row">
+        <button class="btn waves-effect waves-light" type="submit" name="action" (click)="loginGoogle()">Логин через Google
+            <i class="material-icons right">send</i>
+          </button>
+      </div>
+
+      <div class="row">
+        <button class="btn waves-effect waves-light" type="submit" name="action" (click)="loginFacebook()">Логин через Facabook
+            <i class="material-icons right">send</i>
+          </button>
+      </div>
+
+      <div>
+        Нету акканута?
+        <a routerLink="/signup"> Зарегистрируйся </a>
+      </div>
+
+    </form>
+  </div>

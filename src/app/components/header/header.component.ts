@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MovieServiceService } from '../../services/movie-service.service'
+import { LoginServiceService } from '../../services/login-service.service'
+import { AngularFireAuth } from 'angularfire2/auth'
 
 @Component({
   selector: 'header',
@@ -8,10 +9,22 @@ import { MovieServiceService } from '../../services/movie-service.service'
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private MS: MovieServiceService) { }
+  user: firebase.User
 
-  async ngOnInit() {
+  constructor(private ls: LoginServiceService, private afAuth: AngularFireAuth) {
+    
   }
 
+  ngOnInit() {
+    this.afAuth.authState
+      .subscribe( user => {
+        console.log( user )
+        this.user = user
+      })
+  }
+
+  logout = () => {
+    this.ls.logout()
+  }
 
 }

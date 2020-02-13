@@ -1,17 +1,19 @@
 
 <nav>
   <div class="nav-wrapper #e3f2fd blue lighten-5">
-    <a href="/main" class="brand-logo">
+    <a routerLink="main" class="brand-logo">
       <!-- <img src="https://www.logolynx.com/images/logolynx/21/21ced56b3505a37f6e02f0ebdb87d317.gif"> -->
       <img class="materialboxed" width="250" src="https://www.logolynx.com/images/logolynx/21/21ced56b3505a37f6e02f0ebdb87d317.gif">
     </a>
     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down">
-      <li><a href="/new" class="blue-text text-darken-4">Главная</a></li>      
-      <li><a href="/genres" class="blue-text text-darken-4">Жанры</a></li>
-      <li><a href="/popular" class="blue-text text-darken-4">Популярные</a></li>
-      <li><a href="/top" class="blue-text text-darken-4">Топ</a></li>
-      <li><a class="waves-effect waves-light btn #3367a6 blue darken-3" > Войти <i class="material-icons right">account_circle</i></a></li>
+      <weather-widget></weather-widget>
+      <li><a routerLink="new" class="blue-text text-darken-4">Главная</a></li>      
+      <li><a routerLink="genres" class="blue-text text-darken-4">Жанры</a></li>
+      <li><a routerLink="popular" class="blue-text text-darken-4">Популярные</a></li>
+      <li><a routerLink="top" class="blue-text text-darken-4">Топ</a></li>
+      <li class="blue-text text-darken-4" *ngIf="user">{{ user.displayName  }}</li>
+      <li><a class="waves-effect waves-light btn #3367a6 blue darken-3" (click)='logout()' *ngIf="user"> Выйти <i class="material-icons right">account_circle</i></a></li>
     </ul>
   </div>
 </nav>

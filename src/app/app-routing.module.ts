@@ -8,50 +8,64 @@ import { LoginPageComponent } from './pages/login-page/login-page.component'
 import { MoviePageComponent } from './pages/movie-page/movie-page.component'
 import { GenrePageComponent } from './pages/genre-page/genre-page.component'
 import { FindPageComponent } from './pages/find-page/find-page.component'
+import { SignupPageComponent } from './pages/signup-page/signup-page.component'
+import { AuthGuard } from './core/auth.guard';
 
 
 const routes: Routes = [
   {
     path: 'main',
     component: MainPageComponent,
-    data: { title: 'Предстоящие фильмы...' }
+    data: { title: 'Предстоящие фильмы...' },
+    canActivate: [AuthGuard]
   },
   {
     path: 'top',
     component: TopPageComponent,
-    data: { title: 'Топ по рейтингу...' }
+    data: { title: 'Топ по рейтингу...' },
+    canActivate: [AuthGuard]
   },
   {
     path: 'popular',
     component: PopularPageComponent,
-    data: {title: 'Популярные...'}
+    data: {title: 'Популярные...'},
+    canActivate: [AuthGuard]
   },
   {
     path: 'genres',
     component: GenresPageComponent,
-    data: {title: 'Жанры...'}
+    data: {title: 'Жанры...'},
+    canActivate: [AuthGuard]
 
   },
   {
     path: 'genre/:genreid',
-    component: GenrePageComponent 
+    component: GenrePageComponent,
+    canActivate: [AuthGuard] 
   },
   {
     path: 'login',
     component: LoginPageComponent
   },
   {
+    path: 'signup',
+    component: SignupPageComponent
+  },
+  {
     path: 'movie/:movieid',
-    component: MoviePageComponent
+    component: MoviePageComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'find',
     component: FindPageComponent,
-    data: {title: 'Результаты поиска...'}
+    data: {title: 'Результаты поиска...'},
+    canActivate: [AuthGuard]
   },
   {
     path: '**',
-    redirectTo: 'main'
+    redirectTo: 'main',
+    canActivate: [AuthGuard]
   }
 ];
 

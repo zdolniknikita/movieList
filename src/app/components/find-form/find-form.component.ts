@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieServiceService } from '../../services/movie-service.service'
-import { Router } from '@angular/router'
+import { Router, ActivatedRoute } from '@angular/router'
 
 @Component({
   selector: 'find-form',
@@ -12,7 +12,7 @@ export class FindFormComponent implements OnInit {
 
   query: string
 
-  constructor(private MS: MovieServiceService, private router: Router) {
+  constructor(private MS: MovieServiceService, private router: Router, private activeRouter: ActivatedRoute) {
     this.query = ''
   }
 
@@ -24,10 +24,10 @@ export class FindFormComponent implements OnInit {
   }
 
   onSubmit = () => {
-    const { query, router, clearQuery } = this
-    console.log(`submit find form, query = ${query}`)
+    const { query, router, clearQuery, activeRouter } = this
 
-    if (query) router.navigate(['find'], { queryParams: { query } }) 
+    if (query) router.navigate(['find'], { queryParams: { query } })
+    // this.MS.finMovie(query) 
     clearQuery()
   }
 

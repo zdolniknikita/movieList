@@ -8,7 +8,11 @@ import { Router } from '@angular/router';
 })
 export class MovieServiceService {
 
-  constructor(private RM: Router) { }
+  findedMovies: Array<any>
+  
+  constructor(private RM: Router) {
+    this.findedMovies = []
+   }
 
 
   getUpComingMovies = async () => {
@@ -46,12 +50,14 @@ export class MovieServiceService {
   }
 
   finMovie = async (query: string) => {
-   return await axios.get('/search/movie', {
+   this.findedMovies =  await axios.get('/search/movie', {
       params: { 
           query: query
       }
   })
   .then(res => res.data.results)  
+
+  return this.findedMovies
 }
   
   routeTo = (pageName: string) => {

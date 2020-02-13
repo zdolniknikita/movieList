@@ -1,0 +1,30 @@
+<div class="row container">
+    <form class="col s12">
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input [(ngModel)]="name" id="name" type="text" class="validate" [ngModelOptions]="{standalone: true}">
+                <label for="name">Имя</label>
+            </div>
+          </div>
+      <div class="row">
+        <div class="input-field col s12">
+            <input [(ngModel)]="email" id="email" type="email" class="validate" [ngModelOptions]="{standalone: true}">
+            <label for="email">Email</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input [(ngModel)]="password" id="password" type="password" class="validate" [ngModelOptions]="{standalone: true}">
+          <label for="password">Пароль</label>
+        </div>
+      </div>
+      <div class="">
+        <button class="btn waves-effect waves-light" type="submit" name="action" (click)="signup()">Регистрация
+            <i class="material-icons right">send</i>
+          </button>
+      </div>
+
+
+    </form>
+  </div>
