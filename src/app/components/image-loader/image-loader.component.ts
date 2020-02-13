@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ImageLoaderComponent implements OnInit {
 
   @Input() src: string
+  @Input() class: string
 
   loaded: boolean
 
@@ -16,9 +17,14 @@ export class ImageLoaderComponent implements OnInit {
    }
 
   ngOnInit() {
-    let img = document.createElement("img");
-        img.onload = this.onload;
-        img.src = this.src;
+    if (this.src) {
+      let img = document.createElement("img");
+      img.onload = this.onload;
+      img.src = this.src;
+      console.log('src', this.class)  
+    } else {
+      console.log('no src')
+    } 
   }
 
   onload = () => {

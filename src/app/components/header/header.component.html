@@ -21,8 +21,12 @@
 </nav>
 
 <ul class="sidenav" id="mobile-demo">
-  <li><a href="sass.html">Sass</a></li>
-  <li><a href="badges.html">Components</a></li>
-  <li><a href="collapsible.html">Javascript</a></li>
-  <li><a href="mobile.html">Mobile</a></li>
+  <weather-widget></weather-widget>
+  <!-- <li class="blue-text text-lighten-5">________________________________</li> -->
+  <li><a routerLink="new" class="blue-text text-darken-4">Главная</a></li>      
+  <li><a routerLink="genres" class="blue-text text-darken-4">Жанры</a></li>
+  <li><a routerLink="popular" class="blue-text text-darken-4">Популярные</a></li>
+  <li><a routerLink="top" class="blue-text text-darken-4">Топ</a></li>
+  <li class="blue-text text-darken-4" *ngIf="user">{{ user.displayName  }}</li>
+  <li><a class="waves-effect waves-light btn #3367a6 blue darken-3" (click)='logout()' *ngIf="user"> Выйти <i class="material-icons right">account_circle</i></a></li>
 </ul>

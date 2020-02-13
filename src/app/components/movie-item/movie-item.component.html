@@ -1,6 +1,10 @@
 
   <div class="card">
-    <image-loader [src]="src"></image-loader>
+    
+    <div class="card-image waves-effect waves-block waves-light">
+      <image-loader [src]="src" class='activator'></image-loader>
+    </div>
+
     <div class="card-content">
       <span class="card-title activator grey-text text-darken-4" style=" overflow: hidden; text-overflow: ellipsis; white-space: nowrap">{{ movie.title }}</span>
       <p><a routerLink="movie/{{movie.id}}" (click)="onClick(movie.id)">Подробнее</a></p>

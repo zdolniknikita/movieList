@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { LoginServiceService } from '../../services/login-service.service'
 import { AngularFireAuth } from 'angularfire2/auth'
+import M from 'materialize-css'
+
 
 @Component({
   selector: 'header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, AfterViewInit {
 
   user: firebase.User
 
@@ -20,6 +22,11 @@ export class HeaderComponent implements OnInit {
       .subscribe( user => {
         this.user = user
       })
+  }
+
+  ngAfterViewInit() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems, {});
   }
 
   logout = () => {

@@ -3,9 +3,9 @@
     <div class="col s12 m2">
 
         <div class="card horizontal">
-          <div class="card-image">
-
-            <img [src]="src">
+          <div *ngIf="src">
+            <image-loader [src]='src' class="card-image"></image-loader>
+            <!-- <img [src]="src"> -->
           </div>
           <div class="card-stacked">
             <div class="card-content left">
@@ -37,5 +37,22 @@
           </div>
         </div>
       </div>
+
+      <!-- <div class="col s12 m7">
+        <h2 class="header">Horizontal Card</h2>
+        <div class="card horizontal">
+          <div class="card-image">
+            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/7gOozJufKJ9WjcIs38KEs08Iq3D.jpg">
+          </div>
+          <div class="card-stacked">
+            <div class="card-content">
+              <p>I am a very simple card. I am good at containing small bits of information.</p>
+            </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+            </div>
+          </div>
+        </div>
+      </div> -->
 
 </div>

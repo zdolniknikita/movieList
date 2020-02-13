@@ -25,7 +25,7 @@ export class MoviePageComponent implements OnInit {
     this.movie['release_date'] = new Date(this.movie['release_date']).getFullYear()
 
     this.src = `https://image.tmdb.org/t/p/w600_and_h900_bestv2${this.movie['poster_path']}`
-    console.log(this.movie)
+    console.log(this.src)
   
   }
 
