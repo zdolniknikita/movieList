@@ -9,7 +9,7 @@ import { MovieServiceService } from '../../services/movie-service.service'
 })
 export class MoviePageComponent implements OnInit {
 
-  movie: object
+  movie: any
   src: string
   
   constructor(private router: ActivatedRoute, private MS: MovieServiceService) {
